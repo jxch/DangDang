@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Dao.book_Information" %><%--
   Created by IntelliJ IDEA.
   User: 17853
   Date: 2017/4/13
@@ -75,8 +76,60 @@
             <!--商品条目开始-->
             <div class="list_r_line"></div>
             <div class="clear"></div>
-
+<%
+    ArrayList<book_Information> books = (ArrayList<book_Information>) request.getAttribute("books");
+    for (int i=0; i<books.size();i++){
+        book_Information book = books.get(i);
+%>
             <div class="list_r_list">
+						<span class="list_r_list_book">
+                            <a target='_blank' name="link_prd_img" href='#'>
+                             <%   out.print("<img title=\"" + book.name + "\" class=\"dang_img\" src='"+ book.image_Path +"'/>");   %>
+                            </a>
+                        </span>
+                <h2>
+                    <a target='_blank' name="link_prd_name"
+                       href='#'>
+                        <% out.print(book.name); %>
+                    </a>
+                </h2>
+                <h3>
+                    顾客评分：<% out.print(book.fraction); %>
+                </h3>
+                <h4 class="list_r_list_h4">
+                    作 者:
+                    <a href='#' name='作者'>
+                        <% out.print(book.author); %>
+                    </a>
+                </h4>
+                <h4>
+                    出版社：
+                    <a href='#' name='出版社'>
+                        <% out.print(book.press); %>
+                    </a>
+                </h4>
+                <h4>
+                    出版日期：<% out.print(book.publication_date); %>
+                </h4>
+                <h5>
+                    <% out.print(book.introduction); %>
+                </h5>
+                <div class="clear"></div>
+                <h6>
+                    <span class="del">定价: <% out.print(book.price); %></span>
+                    <span class="red">当当价: <% out.print(book.price_dangDang); %></span> 节省：￥<%
+                    float price = book.price - book.price_dangDang; out.print(price);
+                %>
+                </h6>
+                <span class="list_r_list_button">
+                    <img align="top" src='images/buttom_goumai.gif' onclick="javascript:window.location.href='cart.html'"/>
+                </span>
+                <span id="cartInfo_1"></span>
+            </div>
+<%
+    }
+%>
+           <%-- <div class="list_r_list">
 						<span class="list_r_list_book"><a target='_blank'
                                                           name="link_prd_img" href='#'> <img
                                 title="上课头疼的故事" class="dang_img"
@@ -225,7 +278,8 @@
                                                        src='images/buttom_goumai.gif'
                                                        onclick="javascript:window.location.href='cart.html'"/> </span>
                 <span id="cartInfo_4"></span>
-            </div>
+            </div>--%>
+
             <div class="clear"></div>
             <!--商品条目结束-->
 

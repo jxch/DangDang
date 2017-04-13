@@ -8,6 +8,7 @@ public class book_Information {
     public int   id;                    //数据库 id号
     public String name;                 //书名
     public float price;                //价格
+    public float price_dangDang;      //当当价
     public int   fraction;            //顾客评分
     public String author;              //作者
     public String press;               //出版社

@@ -24,6 +24,7 @@ public class BookDao {
                 book.id = rs.getInt("id");
                 book.name = rs.getString("name");
                 book.price = rs.getFloat("price");
+                book.price_dangDang = rs.getFloat("price_dangDang");
                 book.fraction = rs.getInt("fraction");
                 book.author = rs.getString("author");
                 book.press = rs.getString("press");
