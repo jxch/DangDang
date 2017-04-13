@@ -14,4 +14,9 @@ public class book_Information {
     public String publication_date;   //出版日期
     public String introduction;       //书籍简介
     public String image_Path;         //封面图片路径
+
+    public String toString(){
+        String book = id+","+name+","+price+","+fraction+","+author+","+press+","+publication_date+","+introduction+","+image_Path;
+        return book;
+    }
 }
