@@ -141,7 +141,7 @@
     <br />
     <div class="login_in">
         <input id="cancel" class="button_1" type="button" value="取消" onclick="javascrtpt:window.location.href='/shoppingCart'"/>
-        <input id="next" class="button_1" type="button" onclick="location='address'" value="下一步" />
+        <input id="next" class="button_1" type="button" onclick="javascrtpt:window.location.href='/orderForm'" value="下一步" />
     </div>
 
 </div>
