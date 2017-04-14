@@ -35,7 +35,7 @@
 							<a href="register.html" name="helpcenter" class="head_black12a"
                                target="_blank">注册</a> | </span> </span>
             <div class="cart gray4012">
-                <a href="cart.html">购物车</a>
+                <a href="/shoppingCart">购物车</a>
             </div>
         </div>
     </div>
@@ -122,7 +122,9 @@
                 %>
                 </h6>
                 <span class="list_r_list_button">
-                    <img align="top" src='images/buttom_goumai.gif' onclick="javascript:window.location.href='cart.html'"/>
+                    <a href="?id=<% out.print(book.id); %>"><img align="top" src='images/buttom_goumai.gif'/></a>
+                    <%--<img align="top" src='images/buttom_goumai.gif' onclick="javascript:window.location.href='cart.jsp'"/>--%>
+                    <a href="/addShoppingCart?id=<% out.print(book.id); %>">加入购物车</a>
                 </span>
                 <span id="cartInfo_1"></span>
             </div>
@@ -162,7 +164,7 @@
                 </h6>
                 <span class="list_r_list_button"> <img align="top"
                                                        src='images/buttom_goumai.gif'
-                                                       onclick="javascript:window.location.href='cart.html'"/> </span>
+                                                       onclick="javascript:window.location.href='cart.jsp'"/> </span>
                 <span id="cartInfo_1"></span>
             </div>
 
@@ -200,7 +202,7 @@
                 </h6>
                 <span class="list_r_list_button"> <img align="top"
                                                        src='images/buttom_goumai.gif'
-                                                       onclick="javascript:window.location.href='cart.html'"/> </span>
+                                                       onclick="javascript:window.location.href='cart.jsp'"/> </span>
                 <span id="cartInfo_2"></span>
             </div>
 
@@ -238,7 +240,7 @@
                 </h6>
                 <span class="list_r_list_button"> <img align="top"
                                                        src='images/buttom_goumai.gif'
-                                                       onclick="javascript:window.location.href='cart.html'"/> </span>
+                                                       onclick="javascript:window.location.href='cart.jsp'"/> </span>
                 <span id="cartInfo_3"></span>
             </div>
 
@@ -276,7 +278,7 @@
                 </h6>
                 <span class="list_r_list_button"> <img align="top"
                                                        src='images/buttom_goumai.gif'
-                                                       onclick="javascript:window.location.href='cart.html'"/> </span>
+                                                       onclick="javascript:window.location.href='cart.jsp'"/> </span>
                 <span id="cartInfo_4"></span>
             </div>--%>
 

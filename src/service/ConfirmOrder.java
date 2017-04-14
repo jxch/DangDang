@@ -1,7 +1,7 @@
 package service;
 
-import Dao.book_Information;
 import Dao.BookDao;
+import Dao.book_Information;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +11,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by 17853 on 2017/4/13.
- * Show the data
+ * Created by 17853 on 2017/4/14.
+ * Confirm Order
  */
-public class bookListServlet extends HttpServlet{
+public class ConfirmOrder extends HttpServlet{
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<book_Information> books = BookDao.bookList();
-        req.setAttribute("books",books);
-        req.getRequestDispatcher("bookList.jsp").forward(req,resp);
+        String name = BookDao.getUsername();
+        ArrayList<book_Information> books = BookDao.shoppingCart(name);
+        req.setAttribute("shoppingCart",books);
+        req.getRequestDispatcher("order_info.jsp").forward(req,resp);
     }
 }
