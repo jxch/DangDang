@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 17853 on 2017/4/13.
- * List all books
+ * List books
  */
 public class BookDao {
     public static ArrayList<book_Information> bookList(){
