@@ -18,8 +18,9 @@
     <link href="css/book_head090107.css" rel="stylesheet"
           type="text/css"/>
     <link href="css/public_footer.css" rel="stylesheet" type="text/css"/>
+    <script src="userLoginIn.js"></script>
 </head>
-<body>
+<body onload="IsLogin()">
 
 <div style="width: 962px; margin: auto;">
     <a href="#"><img src="images/default/book_banner_081203.jpg"
@@ -30,12 +31,15 @@
     <div class="head_welcome">
         <div class="head_welcome_right">
             <span class="head_welcome_text"> </span>
-            <span class="head_welcome_text"> <span class="little_n">
-							| <a href="login.html" name="mydangdang" class="head_black12a">登录</a> |
-							<a href="register.html" name="helpcenter" class="head_black12a"
-                               target="_blank">注册</a> | </span> </span>
-            <div class="cart gray4012">
-                <a href="/shoppingCart">购物车</a>
+            <span class="head_welcome_text">
+                <span class="little_n"> |
+                    <span id="user_1"><a href="/login_jsp" name="mydangdang" class="head_black12a" id="user1">登录</a></span> |
+					<span id="user_2"><a href="/register_jsp" name="helpcenter" class="head_black12a" target="_blank" id="user2">注册</a></span> |
+                </span>
+            </span>
+            <div class="cart gray4012"  onclick="username('shoppingCart','user')">
+                <%--<a href="/shoppingCart?username=jxc">购物车</a>--%>
+                <a id="user">购物车</a>
             </div>
         </div>
     </div>
@@ -122,9 +126,10 @@
                 %>
                 </h6>
                 <span class="list_r_list_button">
-                    <a href="?id=<% out.print(book.id); %>"><img align="top" src='images/buttom_goumai.gif'/></a>
+                    <a onclick="add_cart(<%out.print(book.id); %>)"><img align="top" src='images/buttom_goumai.gif'/></a>
                     <%--<img align="top" src='images/buttom_goumai.gif' onclick="javascript:window.location.href='cart.jsp'"/>--%>
-                    <a href="/addShoppingCart?id=<% out.print(book.id); %>">加入购物车</a>
+                    <%--<a href="/addShoppingCart?id=<% out.print(book.id); %>" id="addCart">加入购物车</a>--%>
+                    <%--<a href="/addShoppingCart?id=<% out.print(book.id); %>&username=jxc">加入购物车</a>--%>
                 </span>
                 <span id="cartInfo_1"></span>
             </div>

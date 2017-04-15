@@ -1,7 +1,6 @@
 package service;
 
-import Dao.OrderDao;
-import Dao.Order_Information;
+import Dao.pageUser_Information;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,12 +10,15 @@ import java.io.IOException;
 
 /**
  * Created by 17853 on 2017/4/14.
- * order
+ * login.jsp
  */
-public class address_from extends HttpServlet{
+public class login_jsp extends HttpServlet{
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int sign = 0;
+        pageUser_Information sign = new pageUser_Information();
+        sign.name = null;
+        sign.email = null;
+        sign.sign = 3;
         req.setAttribute("sign",sign);
-        req.getRequestDispatcher("address_form.jsp").forward(req,resp);
+        req.getRequestDispatcher("login.jsp").forward(req,resp);
     }
 }

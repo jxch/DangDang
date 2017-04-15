@@ -15,9 +15,12 @@ import java.io.IOException;
 public class addToShoppingCart extends HttpServlet{
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
+        String name = req.getParameter("username");
         String id = req.getParameter("id");
+        String num = req.getParameter("number");
         int bookId = Integer.parseInt(id);
-        BookDao.bookAddToShoppingCart(bookId);
-        resp.sendRedirect("shoppingCart");
+        int number = Integer.parseInt(num);
+        BookDao.bookAddToShoppingCart(bookId,name,number);
+        resp.sendRedirect("shoppingCart?username="+name);
     }
 }

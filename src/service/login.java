@@ -1,5 +1,6 @@
 package service;
 
+import Dao.pageUser_Information;
 import Dao.user_Information;
 import Dao.userDao;
 
@@ -22,13 +23,25 @@ public class login extends HttpServlet{
         user.email = email;
         user.password = password;
         int l = userDao.login(user);
+        pageUser_Information sign = new pageUser_Information();
         if (l == 1){
-            req.getRequestDispatcher("login.html").forward(req,resp);
+            sign.sign = 1;
+            sign.name = null;
+            sign.email = null;
+            req.setAttribute("sign",sign);
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }else if (l == 2){
-            req.getRequestDispatcher("register.html").forward(req,resp);
+            sign.sign = 2;
+            sign.name = null;
+            sign.email = null;
+            req.setAttribute("sign",sign);
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }else {
-
-            resp.sendRedirect("shoppingCart");
+            sign.sign = 0;
+            sign.name = userDao.GetPageUser(user.email);
+            sign.email = user.email;
+            req.setAttribute("sign",sign);
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }
     }
 }

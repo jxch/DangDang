@@ -43,10 +43,10 @@
             </li>
             <li>
                 进入
-                <a href="/shoppingCart">我的当当</a>”查看并管理您的个人信息
+                <a href="/shoppingCart?username">我的当当</a>”查看并管理您的个人信息
             </li>
             <li>
-                <a href="login.html">现在登录系统</a>
+                <a href="/login_jsp">现在登录系统</a>
             </li>
             <li>
                 <a href="/bookList">浏览并选购商品</a>

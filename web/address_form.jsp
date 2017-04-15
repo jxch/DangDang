@@ -13,16 +13,17 @@
     <link href="css/login.css" rel="stylesheet" type="text/css" />
     <link href="css/page_bottom.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
-
+    <script type="text/javascript" src="userLoginIn.js"></script>
 </head>
-<body>
+<body onload="pageInit('address_form')">
 <%@include file="common/head1.jsp"%>
-<div class="login_step">
+<div class="login_step" id="user_address_form">
     生成订单骤: 1.确认订单 &gt;
     <span class="red_bold"> 2.填写送货地址</span> &gt; 3.订单成功
 </div>
+<p style="display: none" id="sign"><%int sign = (int) request.getAttribute("sign");out.print(sign);%></p>
 <div class="fill_message">
-    <form name="ctl00" method="post" action="addOrder" id="f">
+    <form name="ctl00" method="post" id="f">
         <input type="hidden" id="userId"  name="userId" value="#" />
 
         <table class="tab_login">
@@ -101,7 +102,7 @@
 
         <div class="login_in">
 
-            <input id="cancel" class="button_1" type="button" onclick="javascrtpt:window.location.href='/confirmOrder'" value="取消" />
+            <input id="cancel" class="button_1" type="button" onclick="quxiao('address_form')" value="取消" />
             <input id="next" class="button_1" type="submit"  value="下一步" />
             <%--<input id="next" class="button_1" type="submit"  disabled="disabled" value="下一步" />--%>
 

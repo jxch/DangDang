@@ -18,8 +18,9 @@
     <link href="css/shopping_vehicle.css" rel="stylesheet"
           type="text/css" />
     <link href="css/public_footer.css" rel="stylesheet" type="text/css" />
+    <script src="userLoginIn.js"></script>
 </head>
-<body>
+<body onload="pageInit('cart')">
 <br />
 <br />
 <div class="my_shopping">
@@ -80,7 +81,7 @@
 %>
             <tr class='td_no_bord'>
                 <td style='display: none'>
-                    <% out.print(book.id); %>
+                    <p><%out.print(book.id);%></p>
                 </td>
                 <td class="buy_td_6">
                     <span class="objhide"><img /> </span>
@@ -99,8 +100,8 @@
                     &nbsp;&nbsp; <% int num = BookDao.bookNum(book.id); out.print(num); %>
                 </td>
                 <td>
-                    <input class="del_num" type="text" size="3"	id="num3" value="1" />
-                    <a href="javascript:;">变更</a>
+                    <input class="del_num" type="text" size="3"	id="num<%out.print(book.id);%>" value="1" />
+                    <a onclick="changBookNum(<%out.print(book.id);%>)">变更</a>
                 </td>
                 <td>
                     <a href="/delShoppingCartBook?id=<% out.print(book.id); %>">删除</a>
@@ -161,9 +162,9 @@
                     <span class="c_red_b"> ￥<span id='total_account'> <% out.print(price_dangDang); %> </span>
 							</span>
                 </div>
-                <div id="balance" class="balance">
-                    <a name='checkout' href="/confirmOrder"> <img
-                            src="images/butt_balance.gif" alt="结算" border="0" title="结算" />
+                <div id="balance" class="balance" >
+                    <a name='checkout' onclick="jiesuan()">
+                        <img src="images/butt_balance.gif" alt="结算" border="0" title="结算" />
                     </a>
                 </div>
             </div>

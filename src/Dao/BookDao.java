@@ -39,9 +39,9 @@ public class BookDao {
 
         return books;
     }
-    public static void bookAddToShoppingCart(int id){
+    public static void bookAddToShoppingCart(int id,String name,int number){
         Connection con = DBUtil.getCon();
-        String name = getUsername();
+//        name = getUsername();
         if (IsNull(id) == 0) {
             String sql = "insert into shoppingcart(userName,book_Id,number) values(?,?,?)";
             try {
@@ -57,7 +57,12 @@ public class BookDao {
             String sql = "update shoppingcart set number=? where book_Id="+id+" and userName="+"'"+name+"'";
             try {
                 PreparedStatement prep = con.prepareStatement(sql);
-                int num = bookNum(id) + 1;
+                    int num = bookNum(id);
+                if (number == -1) {
+                    num += 1;
+                }else {
+                    num = number;
+                }
                 prep.setInt(1,num);
                 prep.executeUpdate();
             }catch (Exception e){
@@ -155,9 +160,5 @@ public class BookDao {
 
         return book;
     }
-    public static String getUsername(){
-        String name = "jxc";
 
-        return name;
-    }
 }

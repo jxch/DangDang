@@ -16,12 +16,11 @@
     <link href="css/login.css" rel="stylesheet" type="text/css" />
     <link href="css/page_bottom.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
-    <script type="text/javascript" >
-    </script>
+    <script type="text/javascript" src="userLoginIn.js"></script>
 </head>
-<body>
+<body onload="pageInit('order_info')">
 <%@include file="common/head1.jsp"%>
-<div class="login_step">
+<div class="login_step" id="user_order_info">
     生成订单骤:
     <span class="red_bold">1.确认订单</span> > 2.填写送货地址 > 3.订单成功
 </div>
@@ -140,7 +139,7 @@
     <br />
     <br />
     <div class="login_in">
-        <input id="cancel" class="button_1" type="button" value="取消" onclick="javascrtpt:window.location.href='/shoppingCart'"/>
+        <input id="cancel" class="button_1" type="button" value="取消" onclick="quxiao('order_info')"/>
         <input id="next" class="button_1" type="button" onclick="javascrtpt:window.location.href='/orderForm'" value="下一步" />
     </div>
 

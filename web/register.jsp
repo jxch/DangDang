@@ -1,16 +1,25 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: 17853
+  Date: 2017/4/15
+  Time: 10:03
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>用户注册 - 当当网</title>
     <link href="css/login.css" rel="stylesheet" type="text/css" />
     <link href="css/page_bottom.css" rel="stylesheet" type="text/css" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="userLoginIn.js"></script>
 </head>
-<body>
+<body onload="pageInit('register')">
 <div class="login_top">
     <a href="/bookList" target="_blank"><img class="logo"
-                                                 src="images/logo.gif" /> </a>
+                                             src="images/logo.gif" /> </a>
 </div>
+<p style="display: none" id="registerU"><% int sign = (int) request.getAttribute("sign");out.print(sign); %></p>
 <div class="login_step">
     注册步骤:
     <span class="red_bold">1.填写信息</span> &gt; 2.注册成功
@@ -41,8 +50,8 @@
                 </td>
                 <td>
                     <input type="text" name="name" id="txtNickName"
-                           class="text_input">
-                    <div class="text_left" id="nickNameValidMsg">
+                           class="text_input" onfocus="Email()">
+                    <div class="text_left" id="nickNameValidMsg" >
                         <p>
                             您的昵称可以由小写英文字母、中文、数字组成，
                         </p>
@@ -75,7 +84,7 @@
                 <td>
                     <input type="password" name="password1" id="txtRepeatPass"
                            class="text_input">
-                    <div class="text_left" id="repeatPassValidMsg">
+                    <div class="text_left" id="repeatPassValidMsg" >
                         <span id="password1Info" style="color: red"></span>
                     </div>
                 </td>
@@ -89,7 +98,7 @@
                          src="imageCode.action" width="150" height="40"
                          onclick="this.src='imageCode.action?time-'+(new Date()).getTime();" />
                     <input type="text" name="validateCode" id="validateCode"
-                           class="yzm_input">
+                           class="yzm_input" onfocus="pwd()">
                     <div class="text_left t1">
                         <p class="t1">
                             <span id="vcodeValidMsg">请输入图片中的验证码。</span>
@@ -103,6 +112,7 @@
         </table>
         <div class="login_in">
             <input type="submit" id="btnClientRegister" class="button_1" value="注册">
+            <input type="button" class="button_1" value="登陆" onclick="javascrtpt:window.location.href='/login_jsp'">
         </div>
     </form>
 </div>

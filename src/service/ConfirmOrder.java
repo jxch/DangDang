@@ -16,7 +16,8 @@ import java.util.ArrayList;
  */
 public class ConfirmOrder extends HttpServlet{
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = BookDao.getUsername();
+//        String name = BookDao.getUsername();
+        String name = req.getParameter("username");
         ArrayList<book_Information> books = BookDao.shoppingCart(name);
         req.setAttribute("shoppingCart",books);
         req.getRequestDispatcher("order_info.jsp").forward(req,resp);

@@ -26,25 +26,49 @@ public class userDao {
         }catch (Exception e){
             e.printStackTrace();
         }
+
         return 0;
     }
     public static int register(user_Information user){
         /*用户注册过 返回1
-        * 用户注册成功 返回0*/
+        * 用户注册成功 返回0
+        * 用户名不可用  返回2*/
         if (IsRegistered(user.email) == 1) {
-            Connection con = DBUtil.getCon();
-            String sql = "insert into `user` (email,name,password) values(?,?,?)";
-            try {
-                PreparedStatement prep = con.prepareStatement(sql);
-                prep.setString(1, user.email);
-                prep.setString(2, user.name);
-                prep.setString(3, user.password);
-                prep.executeUpdate();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (name(user.name) == 1) {
+                Connection con = DBUtil.getCon();
+                String sql = "insert into `user` (email,name,password) values(?,?,?)";
+                try {
+                    PreparedStatement prep = con.prepareStatement(sql);
+                    prep.setString(1, user.email);
+                    prep.setString(2, user.name);
+                    prep.setString(3, user.password);
+                    prep.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else{
+                return 2;
             }
         }else {
             return 1;
+        }
+        return 0;
+    }
+    public static int name(String username){
+        /*用户名存在 返回0
+        * 用户名不存在 返回1*/
+        Connection con = DBUtil.getCon();
+        String sql = "select * from `user` where name="+"'"+username+"'";
+        try {
+            PreparedStatement prep = con.prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            if (rs.next()){
+                return 0;
+            }else {
+                return 1;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return 0;
     }
@@ -72,4 +96,22 @@ public class userDao {
         }
         return 0;
     }
+    public static String GetPageUser(String email){
+        Connection con = DBUtil.getCon();
+        String sql = "select name from `user` where email='"+email+"'";
+        String username = null;
+        try {
+            PreparedStatement prep = con.prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next()){
+                String name = rs.getString("name");
+                username = name;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return username;
+    }
 }
+
